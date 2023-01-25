@@ -1,0 +1,27 @@
+{
+    "files.exclude" : {
+        "vendor/":true,
+        "README.md":true,
+        "README.md":true,
+        ".env.example":true,
+        ".gitattributes":true,
+        ".gitignore":true,
+        "artisan":true,
+        "composer.json":true,
+        "composer.lock":true,
+        "package.json":true,
+        "bootstrap/":true,
+        "config/":true,
+        "storage/":true,
+        "tests/":true,
+        ".editorconfig":true,
+        "vite.config.js":true,
+        "lang/":true,
+        "phpunit.xml":true,
+        "app/Console":true,
+        "app/Exceptions":true,
+        "README":true,
+        "README":true,
+        "README":true,
+    }
+}
