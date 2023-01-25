@@ -5,17 +5,16 @@ namespace App\Http\Livewire;
 use App\Models\Comment;
 use Carbon\Carbon;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Comments extends Component
 {
-    public $comments;
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+
     public $newComment;
 
-    function mount()
-    {
-        $this->comments = Comment::all()->sortDesc();
-    }
-
+  
     function updated($field) {
         $this->validateOnly($field,['newComment'=>'required|max:255']);
     }
@@ -25,7 +24,6 @@ class Comments extends Component
         // dd($this->newComment);
         $this->validate(['newComment'=>'required|max:255']);
         $createComment = Comment::create(['body' => $this->newComment, 'user_id' => 1]);
-        $this->comments->prepend($createComment);
         $this->newComment = '';
         session()->flash('message','Comment Added Successfully :)');
     }
@@ -34,12 +32,11 @@ class Comments extends Component
     {
         $comment = Comment::find($commentId);
         $comment->delete();
-        $this->comments = $this->comments ->except($commentId);
-                session()->flash('message','Comment Deleted Successfully :)');
+        session()->flash('message','Comment Deleted Successfully :)');
 
     }
     public function render()
     {
-        return view('livewire.comments', ['comments' => $this->comments]);
+        return view('livewire.comments', ['comments' => Comment::latest()->paginate(2)]);
     }
 }

@@ -19,7 +19,7 @@
 
 
     @foreach ($comments as $comment)
-        <div class="card mt-3 m-auto">
+        <div class="card mt-3 mb-3 m-auto">
             <div class="card-header justify-content-between">
                 <span  >{{ $comment->creator->name }}</span>
                 <span style="float:right"><i class="bi bi-x-circle-fill  text-danger" wire:click="remove({{$comment->id}})" style="cursor: pointer;"></i>
@@ -34,4 +34,5 @@
             </div>
         </div>
     @endforeach
+    <div > {{ $comments->links() }} </div>
 </div>
