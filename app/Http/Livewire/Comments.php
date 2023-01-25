@@ -13,7 +13,7 @@ class Comments extends Component
 
     function mount()
     {
-        $this->comments = Comment::all();
+        $this->comments = Comment::all()->sortDesc();
     }
 
     function updated($field) {
@@ -34,7 +34,9 @@ class Comments extends Component
     {
         $comment = Comment::find($commentId);
         $comment->delete();
-        $this->comments=$this->comments->   except($commentId);
+        $this->comments = $this->comments ->except($commentId);
+                session()->flash('message','Comment Deleted Successfully :)');
+
     }
     public function render()
     {
