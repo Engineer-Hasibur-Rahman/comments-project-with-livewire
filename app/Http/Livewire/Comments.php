@@ -6,14 +6,16 @@ use App\Models\Comment;
 use Carbon\Carbon;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Livewire\WithFileUploads;
+
 
 class Comments extends Component
 {
-    use WithPagination;
+    use WithPagination, WithFileUploads;
     protected $paginationTheme = 'bootstrap';
 
     public $newComment;
-
+    public $image;
   
     function updated($field) {
         $this->validateOnly($field,['newComment'=>'required|max:255']);

@@ -8,9 +8,11 @@
             {{ session('message') }}
         </div>
     @endif
-
+    {{ $image }}
+<input type="file" id="image" wire:model="image" class="dropify" data-default-file="url_of_your_file"/>
+   
     <input type="text" wire:model.debounce.500ms="newComment" comment="comment" name="body" class="  mt-5 mb-3 form-control" id="" placeholder="Your Comment">
-    
+            
     @error('newComment')
         <div class="text-sm mb-3" style="color:red">{{ $message }}</div>
     @enderror
@@ -36,3 +38,4 @@
     @endforeach
     <div > {{ $comments->links() }} </div>
 </div>
+

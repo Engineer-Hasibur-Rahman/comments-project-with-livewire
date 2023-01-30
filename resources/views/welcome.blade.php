@@ -14,6 +14,7 @@
   <link href="{{asset('vendor/quill/quill.bubble.css')}}" rel="stylesheet">
   <link href="{{asset('vendor/remixicon/remixicon.css')}}" rel="stylesheet">
   <link href="{{asset('vendor/simple-datatables/style.css')}}" rel="stylesheet">
+      <link href="{{asset('css/dropify.css')}}" rel="stylesheet">
 
   <!-- Template Main CSS File -->
     @livewireStyles
@@ -25,6 +26,8 @@
     @livewire('counter')
     @livewireScripts
      <!-- Vendor JS Files -->
+  <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
+  <script src="{{asset('js/dropify.js')}}"></script>
   <script src="{{asset('vendor/apexcharts/apexcharts.min.js')}}"></script>
   <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('vendor/chart.js/chart.umd.js')}}"></script>
@@ -33,8 +36,10 @@
   <script src="{{asset('vendor/simple-datatables/simple-datatables.js')}}"></script>
   <script src="{{asset('vendor/tinymce/tinymce.min.js')}}"></script>
   <script src="{{asset('vendor/php-email-form/validate.js')}}"></script>
-
-  <!-- Template Main JS File -->
+   <script>
+        $('.dropify').dropify();
+   </script>
+ <!-- Template Main JS File -->
 </body>
 
 </html>
