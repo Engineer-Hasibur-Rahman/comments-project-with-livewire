@@ -8,8 +8,11 @@
             {{ session('message') }}
         </div>
     @endif
-    {{ $image }}
-<input type="file" id="image" wire:model="image" class="dropify" data-default-file="url_of_your_file"/>
+
+    @if($image)
+    <img src="{{ $image }}" width="200px" height="200px" />
+    @endif
+<input type="file" id="image" wire:change="$emit('fileChoosen')" class="dropify" data-default-file="url_of_your_file"/>
    
     <input type="text" wire:model.debounce.500ms="newComment" comment="comment" name="body" class="  mt-5 mb-3 form-control" id="" placeholder="Your Comment">
             
@@ -38,4 +41,18 @@
     @endforeach
     <div > {{ $comments->links() }} </div>
 </div>
+
+<script>
+window.livewire.on('fileChoosen',()=>{
+    let inputFile = document.getElementById('image'),
+        file = inputFile.files[0],
+        reader = new FileReader();
+            console.log(inputFile);
+
+        reader.onloadend = () => {
+            window.livewire.emit('fileUpload',reader.result);
+        }
+        reader.readAsDataURL(file);
+});
+    </script>
 

@@ -18,13 +18,14 @@
 
   <!-- Template Main CSS File -->
     @livewireStyles
+    @livewireScripts
+
 </head>
 
 <body>
 
     <livewire:comments />
     @livewire('counter')
-    @livewireScripts
      <!-- Vendor JS Files -->
   <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
   <script src="{{asset('js/dropify.js')}}"></script>
